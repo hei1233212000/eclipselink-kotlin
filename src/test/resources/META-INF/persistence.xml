@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence
+        version="2.2"
+        xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+    <persistence-unit name="my-app" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>bug.eclipselink.entity.User</class>
+        <properties>
+            <property name="eclipselink.jdbc.url" value="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1"/>
+            <property name="eclipselink.jdbc.driver" value="org.h2.Driver"/>
+            <property name="eclipselink.jdbc.user" value="sa"/>
+            <property name="eclipselink.jdbc.password" value=""/>
+
+            <!-- EclipseLink should create the database schema automatically -->
+            <property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
+            <property name="eclipselink.ddl-generation.output-mode" value="database" />
+            <property name="eclipselink.logging.level.sql" value="FINE"/>
+            <property name="eclipselink.logging.parameters" value="true"/>
+        </properties>
+    </persistence-unit>
+</persistence>
